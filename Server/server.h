@@ -33,9 +33,7 @@ class Server{
     int socket_fd;
     // std::map<std::string, ServerRoute> routes;
 
-    void register_route(char *(*route_function)(void *arg), char* path);
     void init(int domain, int service, int protocol, u_long interface, int port, int backlog);
-
     Server();
     Server(int domain, int service, int protocol, u_long interface, int port, int backlog);
     
