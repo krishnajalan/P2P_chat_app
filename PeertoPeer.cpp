@@ -23,12 +23,13 @@ PeerToPeer::PeerToPeer(int domain, int service, int protocol, int port, u_long i
 
     this->known_hosts.push_back("127.0.0.1");
     this->server.init(domain, service, protocol, interface, port, 20);
+    this->server_function = server_function;
+    this->client_function = client_function;
 };
 
 void PeerToPeer::start(){
     pthread_t server_thread;
     pthread_create(&server_thread, NULL, this->server_function, (void *) this);
-    PeerToPeer *test = this;
     this->client_function((void *)this);
 };
 

@@ -1,6 +1,6 @@
 default: main
 
-main: main.cpp Server/server.cpp Client/client.cpp
+main: main.cpp Server/server.cpp Client/client.cpp PeertoPeer.cpp
 	g++ main.cpp -o main ./Client/Client.cpp ./Server/server.cpp ./PeertoPeer.cpp -lpthread
 
 clean:

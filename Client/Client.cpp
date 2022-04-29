@@ -48,11 +48,10 @@ char* Client::request(char* server_ip, void* request, unsigned long request_size
     }
 
     char* response = (char*)malloc(sizeof(char) * 1024);
-    if (recv(this->socket_fd, response, 1024, 0) < 0)
+    if (read(this->socket_fd, response, 1024) < 0)
     {
         perror("\n RECV");
         exit(0);
     }
-    close(this->socket_fd);
     return response;
 }

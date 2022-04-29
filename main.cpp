@@ -15,7 +15,7 @@ using namespace std;
 
 
 void *server_function(void *arg){
-    // cout << ("Server is Running: \n");
+    cout << ("Server is Running: \n") << endl;
     PeerToPeer *p2p = (PeerToPeer *) arg;
     struct sockaddr *address = (struct sockaddr *) &p2p->server.address;
     socklen_t address_len = sizeof(p2p->server.address);
@@ -27,7 +27,7 @@ void *server_function(void *arg){
         read(client, request, 256);
         char* client_address = inet_ntoa(p2p->server.address.sin_addr);
 
-        // cout << "\t\t" << client_address << ": " << request << "\n";
+        cout << "\t" << client_address << " says : " << request << "\n";
         
         close(client);
         bool found = false;
@@ -58,10 +58,8 @@ void *client_function(void* arg){
             strcpy(temp, host.c_str());
             client.request(temp, request, 256);
         }
-        
+
     }
-    Client client = Client(AF_INET, SOCK_STREAM, 0, 2001, INADDR_ANY);
-    client.request("0.0.0.0", arg, 256);
 }
 
 int main(){
