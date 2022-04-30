@@ -26,7 +26,7 @@ Client::~Client()
     close(this->socket_fd);
 }
 
-char* Client::request(char* server_ip, void* request, unsigned long request_size)
+char* Client::request(const char* server_ip, void* request, unsigned long request_size)
 {
     struct sockaddr_in server;
     server.sin_family = this->domain;
@@ -34,7 +34,6 @@ char* Client::request(char* server_ip, void* request, unsigned long request_size
     server.sin_addr.s_addr = inet_addr(server_ip);
 
     inet_pton(this->domain, server_ip, &server.sin_addr);
-
     if (connect(this->socket_fd, (struct sockaddr *)&server, sizeof(server)) < 0)
     {
         perror("\n CONNECT");
@@ -53,5 +52,6 @@ char* Client::request(char* server_ip, void* request, unsigned long request_size
         perror("\n RECV");
         exit(0);
     }
+    close(this->socket_fd);
     return response;
 }

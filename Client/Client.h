@@ -15,7 +15,7 @@ class Client{
         int port;
         u_long interface;
         
-        char *request(char * server_ip, void *request, unsigned long int request_size);
+        char *request(const char * server_ip, void *request, unsigned long int request_size);
         Client(int domain, int service, int protocol, int port, u_long interface);
         ~Client();
 };

@@ -12,6 +12,7 @@ class PeerToPeer{
     public:
         Server server;
         std::list<std::string> known_hosts;
+        std::list<std::string> new_hosts;
         int domain;
         int service;
         int protocol;

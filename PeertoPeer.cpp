@@ -21,7 +21,10 @@ PeerToPeer::PeerToPeer(int domain, int service, int protocol, int port, u_long i
     this->port = port;
     this->interface = interface;
 
-    this->known_hosts.push_back("127.0.0.1");
+    // this->known_hosts.push_back("127.0.0.1");
+
+    this->known_hosts.push_back("172.23.26.164");    
+
     this->server.init(domain, service, protocol, interface, port, 20);
     this->server_function = server_function;
     this->client_function = client_function;

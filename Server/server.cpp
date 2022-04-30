@@ -38,6 +38,8 @@ void Server::init(int domain, int service, int protocol, u_long interface, int p
         perror("\n SOCKET");
         exit(1);
     }
+    int yes = 1;
+    setsockopt(this->socket_fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(int));
     if ((bind(this->socket_fd, (struct sockaddr *)&this->address, sizeof(this->address))) < 0)
     {
         perror("\n BIND");
